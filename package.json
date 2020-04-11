@@ -10,7 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "jest",
     "client-test": "npm test --prefix client",
-    "build": "npm run build --prefix client"
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "jest": {
     "testEnvironment": "node",
