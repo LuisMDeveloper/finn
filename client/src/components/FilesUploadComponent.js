@@ -30,6 +30,10 @@ export default class FilesUploadComponent extends Component {
         })
     }
 
+    onImport() {
+        //send transactions
+    }
+
     toCurrency(value) {
         return currency(value, { symbol:"$", separator: ",", decimal: "." }).format(true)
     }
@@ -45,29 +49,39 @@ export default class FilesUploadComponent extends Component {
                     <button className="btn btn-primary" type="submit">Upload</button>
                 </div>
             </form>
-
-            {(this.state.transactions.length > 0) && (
-                <table className="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Amount</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.transactions.map((transaction, i) =>
-                        <tr key={i}>
-                            <th scope="row">{i}</th>
-                            <td>{moment(Date.parse(transaction.date)).format("DD/MM/YYY")}</td>
-                            <td>{transaction.description}</td>
-                            <td className="text-right">{this.toCurrency(transaction.amount)}</td>
+            {(this.state.transactions.length > 0) &&
+                <div>
+                    <div className="form-group">
+                        <button className="btn btn-primary" onClick={this.onImport()}>Import Transactions</button>
+                    </div>
+                    <table className="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Category</th>
                         </tr>
-                    )}
-                    </tbody>
-                </table>
-            )}
+                        </thead>
+                        <tbody>
+                        {this.state.transactions.map((transaction, i) =>
+                            <tr key={i}>
+                                <th scope="row">{i}</th>
+                                <td>{moment(Date.parse(transaction.date)).format("DD/MM/YYY")}</td>
+                                <td>{transaction.description}</td>
+                                <td>
+                                    <select className="custom-select" id="category_{i}">
+                                        <option value="None">None</option>
+                                    </select>
+                                </td>
+                                <td className="text-right">{this.toCurrency(transaction.amount)}</td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </table>
+                </div>
+            }
         </div>;
     }
 }
