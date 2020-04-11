@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
+import FilesUploadComponent from "./components/FilesUploadComponent";
 
 function App() {
     return (
@@ -10,7 +10,7 @@ function App() {
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"/>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,12 +22,9 @@ function App() {
                 </div>
             </nav>
             <div className="container">
-                <hr/>
-                <div className="jumbotron">
-                    <h1>Finn</h1>
-                    <p className="lead">Personal Financial Tracker.</p>
+                <div className="row">
+                    <FilesUploadComponent/>
                 </div>
-                <hr/>
             </div>
         </div>
     );
