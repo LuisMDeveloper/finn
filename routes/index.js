@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET api root. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Finn' });
+  res.send('Welcome');
 });
 
 module.exports = router;
