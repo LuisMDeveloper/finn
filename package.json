@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "client-install": "npm ci --prefix client",
     "start": "node ./bin/www",
+    "server": "nodemon ./bin/www",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "jest",
-    "start-dev": "nodemon ./bin/www"
+    "client-test": "npm test --prefix client"
   },
   "jest": {
     "testEnvironment": "node",
@@ -14,6 +18,7 @@
     ]
   },
   "dependencies": {
+    "concurrently": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
@@ -24,7 +29,7 @@
     "node-sass-middleware": "0.11.0"
   },
   "devDependencies": {
-    "jest": "^25.3.0",
+    "jest": "^24.9.0",
     "nodemon": "^2.0.3",
     "supertest": "^4.0.2"
   }
