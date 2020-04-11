@@ -9,7 +9,8 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "jest",
-    "client-test": "npm test --prefix client"
+    "client-test": "npm test --prefix client",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "jest": {
     "testEnvironment": "node",
@@ -28,10 +29,8 @@
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
-    "hbs": "^4.1.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "node-sass-middleware": "0.11.0"
+    "morgan": "~1.9.1"
   },
   "devDependencies": {
     "jest": "^24.9.0",
