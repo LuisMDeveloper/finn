@@ -16,6 +16,10 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/client/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/client/"
     ]
   },
   "dependencies": {
