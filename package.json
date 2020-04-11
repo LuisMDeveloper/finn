@@ -3,18 +3,30 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "client-install": "npm ci --prefix client",
     "start": "node ./bin/www",
-    "test": "jest"
+    "server": "nodemon ./bin/www",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "jest",
+    "client-test": "npm test --prefix client"
   },
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/client/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/client/"
     ]
   },
   "dependencies": {
+    "concurrently": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "hbs": "^4.1.1",
     "http-errors": "~1.6.3",
@@ -22,7 +34,8 @@
     "node-sass-middleware": "0.11.0"
   },
   "devDependencies": {
-    "jest": "^25.3.0",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.3",
     "supertest": "^4.0.2"
   }
 }
